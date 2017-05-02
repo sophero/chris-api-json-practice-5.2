@@ -35,8 +35,10 @@ function PostGallery() {
 			var dateDiv = newDiv("gallery-item__date", parseDate(post.date));
 			var imageDiv = newDiv("gallery-item__img", "");
 			var titleDiv = newDiv('gallery-item__title', post.title);
+			var hlineDiv = newDiv('gallery-item__hline', "");
+			var categoriesDiv = newDiv('gallery-item__categories', categoryStr(post.categories));
 
-			var galleryItemDiv = newDiv('gallery-item', imageDiv + dateDiv + titleDiv); 
+			var galleryItemDiv = newDiv('gallery-item', imageDiv + dateDiv + titleDiv + hlineDiv + categoriesDiv); 
 			postGallery.innerHTML += galleryItemDiv;
 		});
 
@@ -57,6 +59,18 @@ function PostGallery() {
 			var month = monthAbbrArray[split[0]]; //American Date!
 			var day = split[1];
 			return month + " " + day;
+		}
+
+		function categoryStr(categoriesArray) {
+			var str = categoriesArray[0];
+			if (categoriesArray.length === 1) {
+				return str;
+			} else {
+				for (var k = 1; k < categoriesArray.length; k++) {
+					str += ", " + categoriesArray[k]
+				}
+				return str;
+			}
 		}
 
 	}
