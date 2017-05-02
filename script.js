@@ -22,7 +22,6 @@ function PostGallery() {
 				generatePosts(response.posts);
 			},
 			error: function(errorObj) {
-				// console.log(errorObj);
 				console.log("getting an XMLHttpRequest error message? Make sure Cross-Origin Resource Sharing is enabled. You may need to reactivate it.");
 			}
 
@@ -30,20 +29,18 @@ function PostGallery() {
 	}
 
 
-	function generatePosts(posts) {
+	function generatePosts(postsArray) {
 
-		posts.forEach(function(post) {
+		postsArray.forEach(function(post) {
 			var dateDiv = newDiv("gallery-item__date", parseDate(post.date));
 			var imageDiv = newDiv("gallery-item__img", "");
 			var titleDiv = newDiv('gallery-item__title', post.title);
 
 			var galleryItemDiv = newDiv('gallery-item', imageDiv + dateDiv + titleDiv); 
 			postGallery.innerHTML += galleryItemDiv;
-
 		});
 
-
-		[].forEach.call(posts, function(post, index) {
+		postsArray.forEach(function(post, index) {
 			var imageDiv = document.getElementsByClassName('gallery-item__img')[index];
 			imageDiv.style.backgroundImage = "url('" + post.img + "')";
 		});
@@ -55,36 +52,12 @@ function PostGallery() {
 		}
 
 		function parseDate(dateStr) {
-			var monAbbrArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			var monthAbbrArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			var split = dateStr.split("/");
-			var mon = monAbbrArray[split[0]]; //American Date!
+			var month = monthAbbrArray[split[0]]; //American Date!
 			var day = split[1];
-			return mon + day;
+			return month + " " + day;
 		}
-
-
-		// var images = document.getElementsByClassName('gallery-item__img');
-		// displayImages(images);
-
-		// // Using plain for loop:
-		// for (var k = 0; k < posts.length; k++) {
-
-		// 	var newDiv = "<div class='gallery__item'>"
-		// 	newDiv += posts[k].title;
-		// 	newDiv += "</div>";
-		// 	postGallery.innerHTML += newDiv;
-		// }
-
-
-		// function displayImages(imageDivArray, imagesArray) {
-		// 	[].forEach.call(imageDivArray, function(div, index) {
-		// 		div.style.backgroundImage = "url('" + imagesArray[index]
-		// 	})
-		// }
-
-		// wrap this in its own display function? along with other crap?
-		// postGallery.innerHTML += newDiv;
-
 
 	}
 
