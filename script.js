@@ -6,12 +6,13 @@ function PostGallery() {
 	this.getJSON = getJSON;
 
 
-	var postGallery = document.getElementsByClassName('gallery-container')[0];
+	var postGallery = document.getElementsByClassName('gallery')[0];
 
 
 	function getJSON() {
 		$.ajax({
 			url: "https://api-practice-wdi.herokuapp.com/posts",
+			// method: "GET",
 			// data: {
 				
 			// },
@@ -28,37 +29,27 @@ function PostGallery() {
 	function generatePosts(posts) {
 
 		// using forEach:
-
-		[].forEach.call(posts, function(post, index) {
+		posts.forEach(function(post) {
 			var newDiv = "<div class='gallery-item'>"
-			newDiv += post.title;
 			var imageDivStr = "<div class='gallery-item__img'></div>";
 			newDiv += imageDivStr;
+			newDiv += post.title;
 			newDiv += "</div>";
 			
-
-			
-
 			postGallery.innerHTML += newDiv;
-
-			var imageDiv = document.getElementsByClassName('gallery-item__img')[index];
-			console.log(imageDiv);
-			imageDiv.style.backgroundImage = "url('" + post.img;
 
 		});
 
 
-		// using forEach:
-		// posts.forEach(function(post) {
-		// 	var newDiv = "<div class='gallery-item'>"
-		// 	newDiv += post.title;
-		// 	newDiv += "</div>";
-			
-		// 	postGallery.innerHTML += newDiv;
+		[].forEach.call(posts, function(post, index) {
+			var imageDiv = document.getElementsByClassName('gallery-item__img')[index];
+			console.log(imageDiv);
+			imageDiv.style.backgroundImage = "url('" + post.img + "')";
 
-		// 	var imageDiv = "<div class='gallery-item__img'></div>";
+		});
 
-		// });
+
+
 
 		// var images = document.getElementsByClassName('gallery-item__img');
 		// displayImages(images);
