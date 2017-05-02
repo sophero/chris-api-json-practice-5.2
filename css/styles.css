@@ -12,31 +12,42 @@ body {
   flex-wrap: wrap; }
 
 .gallery-item {
-  width: 25vw;
-  min-width: 200px;
+  width: 26vw;
+  min-width: 180px;
   height: 50vw;
-  min-height: 420px;
-  margin: 20px;
+  min-height: 410px;
+  margin: 12px;
   text-align: center; }
 
 .gallery-item__img {
   width: 100%;
-  height: 65%;
+  height: 60%;
   background-position: center;
   background-size: cover; }
 
 .gallery-item__date {
   font-family: "Lato", sans-serif;
   color: #bbbbbb;
-  font-size: 0.65em; }
+  font-size: 0.4em;
+  padding: 5px;
+  margin-top: 8px;
+  opacity: 0.7; }
 
 .gallery-item__title {
-  font-size: 1.2em; }
+  font-size: 2vw;
+  padding: 5px; }
+
+.gallery-item__hline {
+  margin: 8px auto;
+  width: 16px;
+  border-bottom: 1px solid rgba(131, 131, 131, 0.9); }
 
 .gallery-item__categories {
   font-family: "Lato", sans-serif;
   color: #a6a6a6;
-  font-size: 0.65em; }
+  font-size: 0.4em;
+  padding: 5px;
+  opacity: 0.7; }
 
 .gallery-item__img--adjust-right {
   background-position: right; }

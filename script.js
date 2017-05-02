@@ -47,8 +47,6 @@ function PostGallery() {
 			}
 		});
 
-
-
 		function newDiv(classStr, divContent) {
 			var newDiv = "<div class='" + classStr + "'>";
 			newDiv += divContent + "</div>";
