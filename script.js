@@ -1,13 +1,9 @@
 
 var gallery = new PostGallery();
-gallery.getJSON();
 
 function PostGallery() {
-	this.getJSON = getJSON;
-
-
 	var postGallery = document.getElementsByClassName('gallery')[0];
-
+	getJSON();
 
 	function getJSON() {
 		$.ajax({
@@ -45,7 +41,13 @@ function PostGallery() {
 		postsArray.forEach(function(post, index) {
 			var imageDiv = document.getElementsByClassName('gallery-item__img')[index];
 			imageDiv.style.backgroundImage = "url('" + post.img + "')";
+
+			if (index === 5) {
+				imageDiv.classList.add('gallery-item__img--adjust-right');
+			}
 		});
+
+
 
 		function newDiv(classStr, divContent) {
 			var newDiv = "<div class='" + classStr + "'>";
